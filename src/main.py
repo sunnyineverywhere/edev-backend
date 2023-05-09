@@ -8,12 +8,12 @@ import db_model.database
 import db_model.models
 import db_model.crud
 
-db_model.models.Base.metadata.create_all(bind = db_model.database.engine)
+db_model.models.Base.metadata.create_all(bind=db_model.database.engine)
 
 app = FastAPI(
-    title = "E-DEVELOPERS SERVER",
-    description= "for edev website",
-    version = "1.0.0"
+    title="E-DEVELOPERS SERVER",
+    description="for e-dev website",
+    version="1.0.0"
 )
 
 app.add_middleware(
@@ -23,6 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
     allow_credentials=True
 )
+
 
 def get_db():
     db = db_model.database.SessionLocal()
@@ -34,10 +35,16 @@ def get_db():
 
 @app.get("/")
 async def root():
-    return "Hello! This is devewha's API Server";
+    return "Hello! This is dev_ewha's API Server";
 
-@app.get("/posts")
-async def findPosts(db: Session = Depends(get_db)):
-    postResponseDTOList = []
+
+@app.get("/posts", tags=["posts"])
+async def find_posts(db: Session = Depends(get_db)):
+    post_response_dto_list = []
     posts = db_model.crud.get_all_posts(db=db)
     return posts
+
+
+@app.post("/auth", tags=["auth"])
+async def google_auth():
+    return "google oauth2"
