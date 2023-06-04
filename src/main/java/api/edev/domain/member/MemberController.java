@@ -16,6 +16,6 @@ public class MemberController {
     @PostMapping
     public ResponseEntity<?> testMemberAdd() {
         memberService.addTestMember();
-        return new ResponseEntity("이건가", HttpStatus.CREATED);
+        return new ResponseEntity<>("이건가", HttpStatus.CREATED);
     }
 }
