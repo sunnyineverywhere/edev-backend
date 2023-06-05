@@ -1,17 +1,14 @@
 package api.edev.domain.member;
 
+import api.edev.domain.member.dto.MemberInfoModifyReq;
 import api.edev.domain.member.service.MemberService;
 import api.edev.domain.member.storage.AuthMember;
 import api.edev.domain.member.storage.Member;
-import api.edev.global.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
@@ -23,5 +20,11 @@ public class MemberController {
     @GetMapping
     public ResponseEntity<?> currentMemberInfoFind(@AuthMember Member member) {
         return new ResponseEntity<>(member, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> modifyMemberInfo(@AuthMember Member member, @RequestBody MemberInfoModifyReq request) {
+        memberService.modifyMemberInfo(member, request);
+        return new ResponseEntity<>("성공적으로 변경되었습니다.", HttpStatus.OK);
     }
 }

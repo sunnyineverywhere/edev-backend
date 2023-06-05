@@ -1,5 +1,6 @@
 package api.edev.domain.member.service;
 
+import api.edev.domain.member.dto.MemberInfoModifyReq;
 import api.edev.domain.member.storage.Member;
 import api.edev.domain.member.storage.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,11 @@ public class MemberService {
                 .email("abc@gmail.com")
                 .name("abc")
                 .profile("profile").build();
+        memberRepository.save(member);
+    }
+
+    public void modifyMemberInfo(Member member, MemberInfoModifyReq request) {
+        member.modifyMemberInfo(request.getName());
         memberRepository.save(member);
     }
 }
