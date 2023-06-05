@@ -2,27 +2,30 @@ package api.edev.domain.post.service;
 
 import api.edev.domain.member.storage.Member;
 import api.edev.domain.member.storage.MemberRepository;
+import api.edev.domain.post.dto.PostReq;
 import api.edev.domain.post.storage.Category;
 import api.edev.domain.post.storage.Post;
 import api.edev.domain.post.storage.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class PostService {
     private final MemberRepository memberRepository;
     private final PostRepository postRepository;
 
-    public void addTestPost() {
-        Member member = memberRepository.findById(1L)
-                .orElseThrow(() -> new IllegalArgumentException("memberId가 잘못되었습니다."));
-        postRepository.save(Post.builder()
+    public Post addPost(Member member, PostReq request) {
+        Post post = Post.builder()
                 .author(member)
-                .category(Category.RETROSPECT)
-                .url("url")
-                .contents("contents")
-                .isPublic(Boolean.TRUE)
-                .title("title").build());
+                .title(request.getTitle())
+                .contents(request.getContents())
+                .url(request.getUrl())
+                .isPublic(request.getIsPublic())
+                .category(Category.valueOf(request.getCategory()))
+                .build();
+        return postRepository.save(post);
     }
 }
