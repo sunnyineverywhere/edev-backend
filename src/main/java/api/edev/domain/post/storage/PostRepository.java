@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findAllByAuthorOrderByCreatedAtDesc(Member member);
-    List<Post> findAllByCategoryAndIsPublicOrderByCreatedAtDesc(Category category, Boolean isPublic);
+    List<Post> findAllByIsPublicAndStatusIsNotOrderByCreatedAtDesc(Boolean isPublic, Status status);
+    List<Post> findAllByCategoryAndIsPublicAndStatusIsNotOrderByCreatedAtDesc(Category category, Boolean isPublic, Status status);
 }
