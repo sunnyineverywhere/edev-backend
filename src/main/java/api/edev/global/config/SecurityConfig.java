@@ -1,16 +1,15 @@
 package api.edev.global.config;
 
 import api.edev.domain.member.CustomOAuth2UserService;
-import api.edev.global.handler.HttpCookieOAuth2AuthorizationRequestRepository;
-import api.edev.global.handler.OAuth2FailureHandler;
-import api.edev.global.handler.OAuth2SuccessHandler;
+import api.edev.global.oauth.HttpCookieOAuth2AuthorizationRequestRepository;
+import api.edev.global.oauth.OAuth2FailureHandler;
+import api.edev.global.oauth.OAuth2SuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration

@@ -1,4 +1,4 @@
-package api.edev.global.handler;
+package api.edev.global.oauth;
 
 import api.edev.global.util.CookieUtil;
 import com.nimbusds.oauth2.sdk.util.StringUtils;

@@ -1,4 +1,4 @@
-package api.edev.global.handler;
+package api.edev.global.oauth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;

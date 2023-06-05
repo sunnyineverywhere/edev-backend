@@ -1,4 +1,4 @@
-package api.edev.global.handler;
+package api.edev.global.oauth;
 
 import api.edev.global.util.CookieUtil;
 import jakarta.servlet.ServletException;
@@ -12,10 +12,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
-import java.net.URI;
 import java.util.Optional;
 
-import static api.edev.global.handler.HttpCookieOAuth2AuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME;
+import static api.edev.global.oauth.HttpCookieOAuth2AuthorizationRequestRepository.REDIRECT_URI_PARAM_COOKIE_NAME;
 
 @Component
 @RequiredArgsConstructor
