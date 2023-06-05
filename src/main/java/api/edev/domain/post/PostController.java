@@ -1,5 +1,6 @@
 package api.edev.domain.post;
 
+import api.edev.domain.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

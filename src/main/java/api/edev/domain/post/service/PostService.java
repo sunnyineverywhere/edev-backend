@@ -1,4 +1,4 @@
-package api.edev.domain.post;
+package api.edev.domain.post.service;
 
 import api.edev.domain.member.storage.Member;
 import api.edev.domain.member.storage.MemberRepository;
