@@ -1,5 +1,6 @@
 package api.edev.domain.member;
 
+import api.edev.domain.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

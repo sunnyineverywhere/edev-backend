@@ -1,4 +1,4 @@
-package api.edev.domain.member;
+package api.edev.global.oauth;
 
 import api.edev.domain.member.storage.Member;
 import api.edev.domain.member.storage.MemberRepository;

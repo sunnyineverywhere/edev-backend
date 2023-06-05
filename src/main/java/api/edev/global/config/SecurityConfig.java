@@ -1,6 +1,6 @@
 package api.edev.global.config;
 
-import api.edev.domain.member.CustomOAuth2UserService;
+import api.edev.global.oauth.CustomOAuth2UserService;
 import api.edev.global.oauth.HttpCookieOAuth2AuthorizationRequestRepository;
 import api.edev.global.oauth.OAuth2FailureHandler;
 import api.edev.global.oauth.OAuth2SuccessHandler;
