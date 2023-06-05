@@ -30,7 +30,8 @@ public class PostService {
                 .build();
         return postRepository.save(post);
     }
-
+    
+    @Transactional(readOnly = true)
     public List<Post> findPostByAuthor(Member member) {
         return postRepository.findAllByAuthorOrderByCreatedAtDesc(member);
     }
