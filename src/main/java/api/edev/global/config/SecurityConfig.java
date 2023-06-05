@@ -1,5 +1,7 @@
 package api.edev.global.config;
 
+import api.edev.global.jwt.JwtFilter;
+import api.edev.global.jwt.JwtProvider;
 import api.edev.global.oauth.CustomOAuth2UserService;
 import api.edev.global.oauth.HttpCookieOAuth2AuthorizationRequestRepository;
 import api.edev.global.oauth.OAuth2FailureHandler;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -18,6 +21,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final CustomOAuth2UserService customOauth2UserService;
+    private final JwtProvider jwtProvider;
     private final OAuth2SuccessHandler successHandler;
     private final OAuth2FailureHandler failureHandler;
     private final HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
@@ -47,6 +51,8 @@ public class SecurityConfig {
                 .successHandler(successHandler)
                 .failureHandler(failureHandler);
 
-        return httpSecurity.build();
+        return httpSecurity
+                .addFilterBefore(new JwtFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 }
