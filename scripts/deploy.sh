@@ -5,7 +5,7 @@ APP_NAME=edev
 JAR_NAME=$(ls $REPOSITORY/build/libs/ | grep '.jar' | tail -n 1)
 JAR_PATH=$REPOSITORY/build/libs/$JAR_NAME
 
-CURRENT_PID=$(pgrep -f $APP_NAME)
+CURRENT_PID=$(pgrep -f jar)
 
 if [ -z $CURRENT_PID ] #2
 then
@@ -17,6 +17,4 @@ else
 fi
 
 echo "> $JAR_PATH 배포" #3
-nohup java -jar \
-        -Dspring.profiles.active=dev \
-        build/libs/$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar build/libs/$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
