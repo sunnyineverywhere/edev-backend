@@ -17,7 +17,7 @@ public class PostRes {
     private Boolean isPublic;
 
     public PostRes(Post post) {
-        this.author = post.getAuthor().getEmail();
+        this.author = post.getAuthor().getName();
         this.postId = post.getPostId();
         this.title = post.getTitle();
         this.contents = post.getContents();
