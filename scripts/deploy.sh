@@ -17,4 +17,4 @@ else
 fi
 
 echo "> $JAR_PATH 배포" #3
-nohup java -jar build/libs/$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar build/libs/$JAR_NAME > $REPOSITORY/nohup.out &
